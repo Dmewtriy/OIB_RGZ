@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Начало</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="active">Начальная страница</a>
+        {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('register') }}">Регистрация</a>
+            <a href="{{ url_for('login') }}">Вход</a>
+        {% else %}
+            <a href="{{ url_for('profile') }}">Профиль</a>
+            <a href="{{ url_for('logout') }}">Выйти из профиля</a>
+        {% endif %}
+    </div>
+
+    <!-- Контент страницы -->
+    <div class="container">
+        <h1>Добро пожаловать на основную страницу</h1>
+        <p>Здесь можно что-то написать</p>
+    </div>
+</body>
+</html>

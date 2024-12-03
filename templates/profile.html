@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}">Начальная страница</a>
+        <a href="{{ url_for('profile') }}" class="active">Профиль</a>
+        <a href="{{ url_for('logout') }}">Выйти из профиля</a>
+    </div>
+
+    <!-- Контент страницы -->
+    <div class="container">
+        <h2>Привет, {{ name }}!</h2>
+        <p>Это твоя личная страница</p>
+    </div>
+</body>
+</html>

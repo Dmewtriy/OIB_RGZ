@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <div class="navbar">
+        <a href="{{ url_for('home') }}">Начальная страница</a>
+        <a href="{{ url_for('register') }}">Регистрация</a>
+        <a href="{{ url_for('login') }}" class="active">Войти</a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('profile') }}">Профиль</a>
+            <a href="{{ url_for('logout') }}">Выйти из профиля</a>
+        {% endif %}
+    </div>
+
+    <!-- Контент страницы -->
+    <div class="container">
+        <h2>Войти</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label }}
+                {{ form.username() }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password() }}
+            </div>
+            <button type="submit">Войти</button>
+        </form>
+        <p>Еще не создали аккаунт? <a href="{{ url_for('register') }}">Зарегистрироваться здесь</a>.</p>
+    </div>
+</body>
+</html>
